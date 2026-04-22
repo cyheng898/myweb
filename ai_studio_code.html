@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>個人網頁原型 - LEGO Style</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* 自定義 LEGO 區塊陰影風格 */
+        .lego-block {
+            border: 4px solid #000;
+            box-shadow: 8px 8px 0px 0px #000;
+            transition: all 0.2s ease;
+        }
+        .lego-block:hover {
+            transform: translate(-2px, -2px);
+            box-shadow: 10px 10px 0px 0px #000;
+        }
+        .lego-card:active {
+            transform: translate(4px, 4px);
+            box-shadow: 2px 2px 0px 0px #000;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-900 font-sans">
+
+    <!-- Navigation -->
+    <nav class="sticky top-0 z-50 bg-white border-b-4 border-black p-4">
+        <div class="max-w-6xl mx-auto flex justify-between items-center">
+            <h1 class="text-2xl font-black tracking-tighter">MY_LOGO</h1>
+            <div class="space-x-6 font-bold">
+                <a href="#about" class="hover:underline">關於</a>
+                <a href="#projects" class="hover:underline">專案</a>
+                <a href="#contact" class="hover:underline">聯繫</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Section 1: Hero -->
+    <section class="max-w-6xl mx-auto px-4 py-20">
+        <div class="lego-block bg-yellow-400 p-8 md:p-16 flex flex-col md:flex-row items-center gap-12">
+            <div class="flex-1 text-left">
+                <h2 class="text-4xl md:text-6xl font-black leading-tight">
+                    我是 XXX，<br>
+                    <span class="bg-white px-2">樂高可重構</span>
+                </h2>
+                <p class="mt-6 text-xl font-bold italic">"人生如積木，每一塊拆解後都能成就新的高度。"</p>
+            </div>
+            <div class="flex-1 w-full">
+                <!-- 山的預設圖 -->
+                <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=800&q=80" 
+                     alt="Mountain" 
+                     class="w-full h-80 object-cover border-4 border-black">
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 2: About -->
+    <section id="about" class="max-w-6xl mx-auto px-4 py-12">
+        <div class="lego-block bg-white p-10">
+            <h3 class="text-3xl font-black mb-6 uppercase">About Me</h3>
+            <p class="text-2xl leading-relaxed font-medium">
+                我是 XXXDDD。喜歡挑戰既有框架，擅長將複雜的問題拆解為可執行的模組。
+                這裡可以寫更多關於你的背景、技能以及你對樂高哲學的實踐。
+            </p>
+        </div>
+    </section>
+
+    <!-- Section 3: Projects -->
+    <section id="projects" class="max-w-6xl mx-auto px-4 py-12">
+        <h3 class="text-3xl font-black mb-8 uppercase">My Projects</h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            
+            <!-- Project Card Logic -->
+            <!-- 這裡使用 JS 簡單切換內容呈現，模擬點擊顯示詳情 -->
+            <script>
+                function toggleDetail(id) {
+                    const el = document.getElementById('detail-' + id);
+                    el.classList.toggle('hidden');
+                }
+            </script>
+
+            <!-- Card 1 -->
+            <div class="lego-block lego-card bg-blue-400 p-4 cursor-pointer" onclick="toggleDetail(1)">
+                <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNHJpbmZ6bmZ5bmZ5bmZ5bmZ5bmZ5bmZ5bmZ5bmZ5bmZ5bmZ5bmZ5JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1n/3o7TKMGpxfSdwY7N6w/giphy.gif" class="w-full h-48 object-cover border-2 border-black mb-4 bg-white" alt="Project 1">
+                <h4 class="text-xl font-black">專案 A</h4>
+                <p class="font-bold">點擊查看詳細內容</p>
+                <div id="detail-1" class="hidden mt-4 p-4 bg-white border-2 border-black text-sm">
+                    這是專案 A 的詳細資訊：使用了 React 與 Tailwind 開發，解決了使用者在積木堆疊時的重心計算問題。
+                </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="lego-block lego-card bg-red-400 p-4 cursor-pointer" onclick="toggleDetail(2)">
+                <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNHJpbmZ6bmZ5bmZ5bmZ5bmZ5bmZ5bmZ5bmZ5bmZ5bmZ5bmZ5bmZ5JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1n/l0HlS66XfFmX6dY2k/giphy.gif" class="w-full h-48 object-cover border-2 border-black mb-4 bg-white" alt="Project 2">
+                <h4 class="text-xl font-black">專案 B</h4>
+                <p class="font-bold">點擊查看詳細內容</p>
+                <div id="detail-2" class="hidden mt-4 p-4 bg-white border-2 border-black text-sm">
+                    這是專案 B 的詳細資訊：自動化生成的樂高圖紙工具，支援 3D 渲染與零件清單匯出。
+                </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="lego-block lego-card bg-green-400 p-4 cursor-pointer" onclick="toggleDetail(3)">
+                <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNHJpbmZ6bmZ5bmZ5bmZ5bmZ5bmZ5bmZ5bmZ5bmZ5bmZ5bmZ5bmZ5JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1n/3o7TKVUn7iM8FMEU24/giphy.gif" class="w-full h-48 object-cover border-2 border-black mb-4 bg-white" alt="Project 3">
+                <h4 class="text-xl font-black">專案 C</h4>
+                <p class="font-bold">點擊查看詳細內容</p>
+                <div id="detail-3" class="hidden mt-4 p-4 bg-white border-2 border-black text-sm">
+                    這是專案 C 的詳細資訊：開源的積木物理模擬引擎。
+                </div>
+            </div>
+
+            <!-- Card 4 -->
+            <div class="lego-block lego-card bg-purple-400 p-4 cursor-pointer" onclick="toggleDetail(4)">
+                <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNHJpbmZ6bmZ5bmZ5bmZ5bmZ5bmZ5bmZ5bmZ5bmZ5bmZ5bmZ5bmZ5JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1n/xT9IgN8YKvA7v4mI9y/giphy.gif" class="w-full h-48 object-cover border-2 border-black mb-4 bg-white" alt="Project 4">
+                <h4 class="text-xl font-black">專案 D</h4>
+                <p class="font-bold">點擊查看詳細內容</p>
+                <div id="detail-4" class="hidden mt-4 p-4 bg-white border-2 border-black text-sm">
+                    這是專案 D 的詳細資訊：一個可以分析你手邊積木能組成什麼模型的 AI。
+                </div>
+            </div>
+
+            <!-- Card 5 -->
+            <div class="lego-block lego-card bg-orange-400 p-4 cursor-pointer" onclick="toggleDetail(5)">
+                <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNHJpbmZ6bmZ5bmZ5bmZ5bmZ5bmZ5bmZ5bmZ5bmZ5bmZ5bmZ5bmZ5JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1n/3o7TKD5l9BCpNVUv6g/giphy.gif" class="w-full h-48 object-cover border-2 border-black mb-4 bg-white" alt="Project 5">
+                <h4 class="text-xl font-black">專案 E</h4>
+                <p class="font-bold">點擊查看詳細內容</p>
+                <div id="detail-5" class="hidden mt-4 p-4 bg-white border-2 border-black text-sm">
+                    這是專案 E 的詳細資訊：樂高愛好者的社群平台原型。
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Section 4: Contact -->
+    <section id="contact" class="max-w-6xl mx-auto px-4 py-24 text-center">
+        <div class="lego-block bg-black text-white py-16 px-4">
+            <h3 class="text-4xl font-black mb-8 italic uppercase italic text-yellow-400 underline">Let's Build Something!</h3>
+            <p class="text-xl mb-10">對我的專案感興趣，或是想聊聊樂高？</p>
+            <a href="mailto:hello@example.com" 
+               class="lego-block bg-white text-black px-10 py-4 text-2xl font-black hover:bg-yellow-400 inline-block">
+                聯繫我
+            </a>
+        </div>
+    </section>
+
+    <footer class="text-center py-8 font-bold">
+        <p>© 2024 XXX. Built with LEGO Logic.</p>
+    </footer>
+
+</body>
+</html>
